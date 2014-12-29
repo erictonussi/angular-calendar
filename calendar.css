@@ -1,0 +1,75 @@
+.calendar {
+  padding: 10px;
+}
+
+.calendar .header {
+  position: relative;
+  line-height: 30px;
+  margin-bottom: 7px;
+  margin-top: 2px;
+}
+.calendar .header button {
+  background: none;
+  border: none;
+  font-size: 20px;
+}
+
+.calendar .header .prev, .calendar .header .next {
+  position: absolute;
+}
+.calendar .header .next {
+  right: 0;
+  top: 0;
+}
+
+.calendar .header .month {
+  text-align: center;
+  font-size: 20px;
+}
+
+td {
+  border: 1px solid #ccc;
+  height: 45px;
+  width: 14.28571428571429%;
+  vertical-align: middle;
+  text-align: center;
+  background-color: white;
+  font-weight: bold;
+  color: #333;
+}
+td span {
+}
+
+td .hasEvent {
+  height: 0;
+  font-size: 5px;
+  line-height: 5px;
+  padding-left: 2px;
+}
+
+td .hasEvent i {
+  padding-right: 1px;
+}
+
+
+td.cal-day-outmonth {
+  opacity: 0.3;
+}
+
+td.cal-day-weekend {
+  color: darkred;
+}
+
+td.active {
+  /*//border: black solid 1px;*/
+  background-color: #eee;
+  color: #000;
+}
+
+td.active span {
+}
+
+td.cal-day-today {
+  font-size: 18px;
+  background-color: #eef;
+}

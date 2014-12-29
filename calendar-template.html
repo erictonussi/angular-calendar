@@ -1,0 +1,32 @@
+
+<div class="calendar">
+	<div class="header"> 
+		<button class="prev" ng-click="navigate.prevMotnth()"><i class="ion-arrow-left-b"></i></button> 
+		<div class="month">{{currentDate.getMonthFormatted()}} {{currentDate.getFullYear()}}</div>
+		<button class="next" ng-click="navigate.nextMotnth()"><i class="ion-arrow-right-b"></i></button> 
+	</div> 
+	<table width="100%" border="1">
+
+		<tr class="cal-row-fluid cal-row-head">
+			<th class="cal-span1">{{language.d0}}</th>
+			<th class="cal-span1">{{language.d1}}</th>
+			<th class="cal-span1">{{language.d2}}</th>
+			<th class="cal-span1">{{language.d3}}</th>
+			<th class="cal-span1">{{language.d4}}</th>
+			<th class="cal-span1">{{language.d5}}</th>
+			<th class="cal-span1">{{language.d6}}</th>
+		</tr>
+
+		<tr ng-repeat="week in month">
+			<td ng-repeat="day in week" class="cal-month-day" ng-class="{'cal-day-outmonth' : day.outmonth , 'cal-day-weekend' : day.day == 6 || day.day == 0 , 'cal-day-today' : day.isToday, 'active' : day.date == activeDay.date && day.month == activeDay.month }" ng-click="setActiveDay(day);">
+				<div ng-click"">
+					<span data-cal-view="day">{{day.date}}</span>
+					<div ng-show="day.content" class="hasEvent">
+						<i class="ion-record" ng-repeat="event in day.content | limitTo:3"></i>
+					</div>	
+				</div>
+			</td>
+		</tr>
+	</table>
+	
+</div>
