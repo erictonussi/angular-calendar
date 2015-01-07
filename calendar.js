@@ -260,6 +260,8 @@ var calendarLinkFunction = function (scope, element) {
 
 }
 
+var scripts = document.getElementsByTagName("script")
+var currentScriptPath = scripts[scripts.length-1].src;
 
 app.directive("calendar", function(){
     return{
@@ -272,8 +274,8 @@ app.directive("calendar", function(){
         },
         replace: true,
         link: calendarLinkFunction,
-        templateUrl: '../lib/angular-calendar/calendar-template.html'
+        // templateUrl: '../lib/angular-calendar/calendar-template.html'
+        templateUrl: currentScriptPath.substring(0, currentScriptPath.lastIndexOf('/') + 1) 
+        + 'calendar-template.html'
     }
 });
-
-
