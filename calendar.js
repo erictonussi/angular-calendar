@@ -5,12 +5,12 @@ var app = angular.module('app.directives', []);
 var language = {
 
     ms0: 'Janeiro',
-    ms1: 'Fevereito',
+    ms1: 'Fevereiro',
     ms2: 'Março',
     ms3: 'Abril',
     ms4: 'Maio',
     ms5: 'Junho',
-    ms6: 'Julio',
+    ms6: 'Julho',
     ms7: 'Agosto',
     ms8: 'Setembro',
     ms9: 'Outubro',
@@ -204,6 +204,14 @@ var calendarLinkFunction = function (scope, element) {
         if ( scope.activeDay ) scope.setActiveDay( scope.activeDay );
         else if ( scope.today ) scope.setActiveDay( scope.today );
 
+        var firstDay = scope.days[0];
+        var lastDay = scope.days[ scope.days.length-1 ];
+
+        var startDate = new Date( firstDay.year , firstDay.month -1 , firstDay.date );
+        var endDate = new Date( lastDay.year , lastDay.month -1 , lastDay.date );
+
+        scope.selectActiveMonth({startDate: startDate, endDate: endDate });
+
     }
 
     scope.activeDay;
@@ -270,7 +278,8 @@ app.directive("calendar", function(){
             content: '=calendarContent',
             assignedMonth: '=calendarMonth',
             assignedyear: '=calendarYear',
-            selectActiveDay : '&onSelectActiveDay'
+            selectActiveDay : '&onSelectActiveDay',
+            selectActiveMonth : '&onSelectActiveMonth'
         },
         replace: true,
         link: calendarLinkFunction,
